@@ -6,9 +6,70 @@
 #include "LinkedList.h"
 #include "Queue.h"
 #include "Stack.h"
-#include <unordered_map>
-#include <unordered_set>
 #include <string>
+
+// Кастомная хеш-таблица для хранения строковых ключей и значений
+class CustomHashTable {
+public:
+    CustomHashTable(int size) : size(size) {
+        table = new std::pair<std::string, std::string>[size];
+        for (int i = 0; i < size; ++i) {
+            table[i].first = "";
+        }
+    }
+
+    void set(const std::string& key, const std::string& value) {
+        int index = hash(key);
+        table[index] = {key, value};
+    }
+
+    std::string get(const std::string& key) {
+        int index = hash(key);
+        if (table[index].first == key) {
+            return table[index].second;
+        }
+        return "";
+    }
+
+private:
+    int hash(const std::string& key) {
+        int hashValue = 0;
+        for (char c : key) {
+            hashValue = (hashValue * 31 + c) % size;
+        }
+        return hashValue;
+    }
+
+    std::pair<std::string, std::string>* table;
+    int size;
+};
+
+// Кастомный Set для работы с уникальными значениями
+class CustomSet {
+public:
+    CustomSet(int size) : size(size) {
+        setArray = new std::string[size];
+        count = 0;
+    }
+
+    void insert(const std::string& value) {
+        if (!isMember(value)) {
+            setArray[count++] = value;
+        }
+    }
+
+    bool isMember(const std::string& value) {
+        for (int i = 0; i < count; ++i) {
+            if (setArray[i] == value) return true;
+        }
+        return false;
+    }
+
+private:
+    std::string* setArray;
+    int size;
+    int count;
+};
 
 int main() {
     std::ifstream inputFile("123.txt");
@@ -30,8 +91,8 @@ int main() {
     Queue queue;
     HashTable hashTable(10);
     CompleteBinaryTree tree;
-    std::unordered_map<std::string, std::unordered_map<std::string, std::string>> hashTables;
-    std::unordered_map<std::string, std::unordered_set<std::string>> sets;
+    CustomHashTable customHashTable(10);
+    CustomSet customSet(10);
 
     std::string command;
     while (inputFile >> command) {
@@ -123,10 +184,10 @@ int main() {
 
         // Новые команды для работы с дополнительными структурами
         else if (command == "HSET") {
-            std::string hashName, key, value;
-            inputFile >> hashName >> key >> value;
-            hashTables[hashName][key] = value;
-            outputFile << "HSET: Added key " << key << " with value " << value << " to hash " << hashName << std::endl;
+            std::string key, value;
+            inputFile >> key >> value;
+            customHashTable.set(key, value);
+            outputFile << "HSET: Added key " << key << " with value " << value << " to hash table" << std::endl;
         } else if (command == "SPUSH") {
             int item;
             inputFile >> item;
@@ -134,16 +195,16 @@ int main() {
             outputFile << "SPUSH: Pushed " << item << " onto the stack" << std::endl;
         } else if (command == "QPOP") {
             if (!queue.isEmpty()) {
-                int item = queue.dequeue();  // Здесь вызываем dequeue, чтобы получить значение
+                int item = queue.dequeue();
                 outputFile << "QPOP: Popped " << item << " from the queue" << std::endl;
             } else {
                 outputFile << "QPOP: Queue is empty" << std::endl;
             }
         } else if (command == "SISMEMBER") {
-            std::string setName, value;
-            inputFile >> setName >> value;
-            bool isMember = sets[setName].find(value) != sets[setName].end();
-            outputFile << "SISMEMBER: Element " << value << " in set " << setName << ": " << (isMember ? "TRUE" : "FALSE") << std::endl;
+            std::string value;
+            inputFile >> value;
+            bool isMember = customSet.isMember(value);
+            outputFile << "SISMEMBER: Element " << value << " in set: " << (isMember ? "TRUE" : "FALSE") << std::endl;
         }
     }
 
