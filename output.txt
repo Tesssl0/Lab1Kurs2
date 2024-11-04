@@ -1,0 +1,9 @@
+Array contents:
+10 
+Linked List contents:
+5 
+Stack contents:
+15 
+Queue contents:
+20 
+QPOP: Popped 20 from the queue

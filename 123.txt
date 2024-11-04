@@ -1,0 +1,9 @@
+ArrayAppend 10
+ArrayPrint
+ListPushFront 5
+ListPrint
+StackPush 15
+StackPrint
+QueueEnqueue 20
+QueuePrint
+QPOP myqueue
