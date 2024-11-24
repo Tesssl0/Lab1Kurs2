@@ -1,9 +1,55 @@
+ArrayAppend 5
 ArrayAppend 10
+ArrayAppend 20
+ArrayAppend 25
+ArrayInsert 2 15
+ArrayInsert 4 30
+ArrayRemove 3
 ArrayPrint
-ListPushFront 5
+
+ListPushFront 100
+ListPushFront 200
+ListPushBack 300
+ListPushBack 400
+ListPopFront
+ListPopBack
 ListPrint
-StackPush 15
+
+StackPush 500
+StackPush 600
+StackPush 700
+StackPush 800
+StackPop
 StackPrint
-QueueEnqueue 20
+
+QueueEnqueue 50
+QueueEnqueue 60
+QueueEnqueue 70
+QueueEnqueue 80
+QueueDequeue
 QueuePrint
-QPOP myqueue
+QPOP
+
+HSET myhash key1 value1
+HSET myhash key2 value2
+HSET myhash key3 value3
+HSET myhash key4 value4
+HSET myhash key5 value5
+HashPrint
+
+TreeInsert 10
+TreeInsert 20
+TreeInsert 5
+TreeInsert 15
+TreeInsert 25
+TreeSearch 15
+TreeSearch 30
+TreeCheckComplete
+TreePrint
+
+SISMEMBER myset element1
+SISMEMBER myset element2
+SPUSH 99
+SPUSH 88
+SPUSH 77
+StackPrint
