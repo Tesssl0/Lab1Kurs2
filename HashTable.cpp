@@ -75,7 +75,7 @@ void HashTable::remove(int key) {
     std::cerr << "Key not found.\n";
 }
 
-void HashTable::display(std::ostream& os) const {
+void HashTable::print(std::ostream& os) const {
     for (size_t i = 0; i < size; ++i) {
         HashNode* temp = table[i];
         os << "Index " << i << ": ";

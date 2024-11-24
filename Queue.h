@@ -20,10 +20,10 @@ public:
     Queue();
     ~Queue();
     void enqueue(int value);
-    int dequeue(); // Изменили возвращаемый тип на int
+    int dequeue();
     int peek() const;
     bool isEmpty() const;
-    void display(std::ostream& os) const;
+    void print(std::ostream& os) const;
 };
 
 #endif // QUEUE_H

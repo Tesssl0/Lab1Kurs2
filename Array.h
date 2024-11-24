@@ -18,7 +18,7 @@ public:
     void remove(int index);
     void replace(int index, int value);
     size_t size() const;
-    void read(std::ostream& os) const; // Изменено на передачу потока вывода
+    void print(std::ostream& os) const;
 
 private:
     void resize();

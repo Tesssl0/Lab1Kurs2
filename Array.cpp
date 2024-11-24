@@ -61,7 +61,7 @@ size_t Array::size() const {
     return length;
 }
 
-void Array::read(std::ostream& os) const { // Изменено на передачу потока вывода
+void Array::print(std::ostream& os) const {
     for (size_t i = 0; i < length; ++i) {
         os << data[i] << " ";
     }

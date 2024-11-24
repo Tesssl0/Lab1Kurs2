@@ -20,7 +20,7 @@ public:
     ~Stack();
     void push(int value);
     void pop();
-    void read(std::ostream& os) const;
+    void print(std::ostream& os) const;
     bool isEmpty() const;
 };
 

@@ -26,7 +26,7 @@ void Stack::pop() {
     delete temp;
 }
 
-void Stack::read(std::ostream& os) const {
+void Stack::print(std::ostream& os) const {
     StackNode* temp = top;
     while (temp) {
         os << temp->data << " ";

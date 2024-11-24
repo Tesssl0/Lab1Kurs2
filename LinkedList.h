@@ -28,6 +28,7 @@ public:
     void push_back(T value);
     void pop_front();
     void pop_back();
+    T get(int index) const;
     void print(std::ostream& os) const;
 
 private:
@@ -48,6 +49,7 @@ public:
     void push_back(T value);
     void pop_front();
     void pop_back();
+    T get(int index) const;
     void print(std::ostream& os) const;
 
 private:

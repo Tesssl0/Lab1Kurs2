@@ -52,6 +52,19 @@ void SinglyLinkedList<T>::pop_back() {
 }
 
 template<typename T>
+T SinglyLinkedList<T>::get(int index) const {
+    LinkedListNode<T>* current = head;
+    for (int i = 0; i < index && current; ++i) {
+        current = current->next;
+    }
+    if (!current) {
+        std::cerr << "Index out of range.\n";
+        return T();
+    }
+    return current->data;
+}
+
+template<typename T>
 void SinglyLinkedList<T>::print(std::ostream& os) const {
     LinkedListNode<T>* current = head;
     while (current) {
@@ -124,6 +137,19 @@ void DoublyLinkedList<T>::pop_back() {
     }
     current->prev->next = nullptr;
     delete current;
+}
+
+template<typename T>
+T DoublyLinkedList<T>::get(int index) const {
+    LinkedListNode<T>* current = head;
+    for (int i = 0; i < index && current; ++i) {
+        current = current->next;
+    }
+    if (!current) {
+        std::cerr << "Index out of range.\n";
+        return T();
+    }
+    return current->data;
 }
 
 template<typename T>

@@ -23,13 +23,13 @@ public:
     void insert(int value);
     bool search(int value) const;
     bool isComplete() const;
-    void read(std::ostream& os) const;
+    void print(std::ostream& os) const;
     ~CompleteBinaryTree();
 
 private:
     bool searchHelper(Node* node, int value) const;
     bool isCompleteHelper(Node* node, int index, int numberNodes) const;
-    void readHelper(Node* node, std::ostream& os) const;
+    void printHelper(Node* node, std::ostream& os) const;
     void clear(Node* node);
 };
 

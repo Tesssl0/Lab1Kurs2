@@ -59,16 +59,16 @@ bool CompleteBinaryTree::isCompleteHelper(Node* node, int index, int numberNodes
            isCompleteHelper(node->right, 2 * index + 2, numberNodes);
 }
 
-void CompleteBinaryTree::read(std::ostream& os) const {
-    readHelper(root, os);
+void CompleteBinaryTree::print(std::ostream& os) const {
+    printHelper(root, os);
     os << std::endl;
 }
 
-void CompleteBinaryTree::readHelper(Node* node, std::ostream& os) const {
+void CompleteBinaryTree::printHelper(Node* node, std::ostream& os) const {
     if (!node) return;
     os << node->data << " ";
-    readHelper(node->left, os);
-    readHelper(node->right, os);
+    printHelper(node->left, os);
+    printHelper(node->right, os);
 }
 
 CompleteBinaryTree::~CompleteBinaryTree() {

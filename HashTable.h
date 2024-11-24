@@ -23,7 +23,7 @@ public:
     void set(int key, int value);
     int get(int key) const;
     void remove(int key);
-    void display(std::ostream& os) const;
+    void print(std::ostream& os) const;
 
 private:
     size_t hashFunction(int key) const;
